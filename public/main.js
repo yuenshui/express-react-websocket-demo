@@ -235,7 +235,33 @@ $(function() {
     $inputMessage.focus();
   });
 
-  // Socket events
+  /* Socket events
+   * 	connect
+   * 	connect_error
+   * 	connect_timeout
+   * 	connecting
+   * 	disconnect
+   * 	error
+   * 	reconnect
+   * 	reconnect_attempt
+   * 	reconnect_failed
+   * 	reconnect_error
+   * 	reconnecting
+   * 	ping
+   * 	pong
+   **/
+  socket.on("connect_error", error => {
+    if (error.description == "404") log("服务未开启");
+  });
+  socket.on("error", (...arg) => {
+    log("error", arg);
+  });
+  socket.on("connect_timeout", (...arg) => {
+    log("connect_timeout", arg);
+  });
+  socket.on("reconnect_failed", (...arg) => {
+    log("connect_timeout", arg);
+  });
 
   // Whenever the server emits 'login', log the login message
   socket.on("login", data => {

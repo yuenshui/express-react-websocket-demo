@@ -1,4 +1,5 @@
-const createError = require("http-errors");
+"use strict";
+
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -18,7 +19,8 @@ app.use("/admin", adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  res.status = 404;
+  res.sendStatus(404);
+  res.end();
 });
 
 // error handler
