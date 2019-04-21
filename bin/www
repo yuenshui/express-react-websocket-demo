@@ -5,7 +5,6 @@
  */
 
 const config = require("../config.json");
-const express = require("express");
 const app = require("../app");
 const debug = require("debug")("demo:server");
 const http = require("http");
